@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{27CDDC43-1F06-44EA-8335-3A8E0BDED537}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{2275295A-4488-4235-8F02-07810E232ACE}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PiDev</RootNamespace>
-    <AssemblyName>PiDev</AssemblyName>
+    <RootNamespace>PiDev.Service</RootNamespace>
+    <AssemblyName>PiDev.Service</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -60,11 +57,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <ProjectReference Include="..\PiDev.Data\PiDev.Data.csproj">
+      <Project>{4e75b78f-63cf-4272-9a27-aedfd749faac}</Project>
+      <Name>PiDev.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PiDev.Domain\PiDev.Domain.csproj">
+      <Project>{449dc901-2878-4fb5-b81e-8cdc1aeecea8}</Project>
+      <Name>PiDev.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PiDev.ServicePattern\PiDev.ServicePattern.csproj">
+      <Project>{64340f53-a220-465d-b101-c31f2a03282f}</Project>
+      <Name>PiDev.ServicePattern</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
