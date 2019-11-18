@@ -8,5 +8,6 @@ namespace PiDev.Data
 {
     public class Class1
     {
+        //test
     }
 }
