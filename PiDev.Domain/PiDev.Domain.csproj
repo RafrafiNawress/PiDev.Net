@@ -42,6 +42,33 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Entity\bill.cs" />
+    <Compile Include="Entity\commentaire.cs" />
+    <Compile Include="Entity\compentency.cs" />
+    <Compile Include="Entity\competency.cs" />
+    <Compile Include="Entity\criterion.cs" />
+    <Compile Include="Entity\employee.cs" />
+    <Compile Include="Entity\employeecompentency.cs" />
+    <Compile Include="Entity\evaluationsheet.cs" />
+    <Compile Include="Entity\followedup.cs" />
+    <Compile Include="Entity\formationcomment.cs" />
+    <Compile Include="Entity\holiday.cs" />
+    <Compile Include="Entity\job.cs" />
+    <Compile Include="Entity\jobcompetency.cs" />
+    <Compile Include="Entity\jobfamily.cs" />
+    <Compile Include="Entity\mission.cs" />
+    <Compile Include="Entity\missionrequest.cs" />
+    <Compile Include="Entity\notification.cs" />
+    <Compile Include="Entity\plan.cs" />
+    <Compile Include="Entity\planifiedtraining.cs" />
+    <Compile Include="Entity\planing.cs" />
+    <Compile Include="Entity\project.cs" />
+    <Compile Include="Entity\reclamation.cs" />
+    <Compile Include="Entity\request.cs" />
+    <Compile Include="Entity\task.cs" />
+    <Compile Include="Entity\team.cs" />
+    <Compile Include="Entity\training.cs" />
+    <Compile Include="Entity\trainingcentre.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

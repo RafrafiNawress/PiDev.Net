@@ -1,19 +1,18 @@
-namespace PiDev.Data
+namespace PiDev.Domain
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
-    [Table("pidev.competency")]
-    public partial class competency
+    [Table("pidev.job")]
+    public partial class job
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public competency()
+        public job()
         {
             employees = new HashSet<employee>();
-            jobs = new HashSet<job>();
+            competencies = new HashSet<competency>();
         }
 
         public int id { get; set; }
@@ -26,10 +25,14 @@ namespace PiDev.Data
         [StringLength(255)]
         public string name { get; set; }
 
+        public int? jobfamily_id { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<employee> employees { get; set; }
 
+        public virtual jobfamily jobfamily { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<job> jobs { get; set; }
+        public virtual ICollection<competency> competencies { get; set; }
     }
 }

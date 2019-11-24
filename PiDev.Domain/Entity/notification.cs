@@ -1,13 +1,12 @@
-namespace PiDev.Data
+namespace PiDev.Domain
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
-    [Table("pidev.commentaire")]
-    public partial class commentaire
+    [Table("pidev.notification")]
+    public partial class notification
     {
         public int id { get; set; }
     }

@@ -4,6 +4,7 @@ namespace PiDev.Data
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using Domain;
 
     public partial class Context : DbContext
     {

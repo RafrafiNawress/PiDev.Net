@@ -1,13 +1,12 @@
-namespace PiDev.Data
+namespace PiDev.Domain
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
-    [Table("pidev.followedup")]
-    public partial class followedup
+    [Table("pidev.commentaire")]
+    public partial class commentaire
     {
         public int id { get; set; }
     }
