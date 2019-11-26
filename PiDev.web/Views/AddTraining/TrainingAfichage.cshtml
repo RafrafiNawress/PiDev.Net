@@ -1,0 +1,31 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+
+</head>
+<body>
+    <a href="@Url.Action("Create", "training")">add training</a>
+    <table cellpadding="2" cellspacing="2" border="1">
+        <tr>
+            <th>id</th>
+            <th>name</th>
+        </tr>
+        @foreach (var p in ViewBag.result)
+        {
+            <tr>
+                <td>@p.id</td>
+                <td>@p.name</td>
+            </tr>
+        }
+
+
+
+
+
+    </table>
+</body>
+</html>
