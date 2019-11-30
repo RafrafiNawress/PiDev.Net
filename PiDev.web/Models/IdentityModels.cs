@@ -1,4 +1,4 @@
-﻿using System.Data.Entity;
+﻿using System.Data;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -29,5 +29,7 @@ namespace PiDev.web.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<PiDev.Domain.Entity.mission> missions { get; set; }
     }
 }

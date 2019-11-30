@@ -1,24 +1,14 @@
-namespace PiDev.Domain.Entity
+﻿using PiDev.Domain.Entity;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+
+namespace PiDev.web.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
-    [Table("pidev.mission")]
-    public partial class mission
+    public class MissionModel
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public mission()
-        {
-            bills = new HashSet<bill>();
-            bills1 = new HashSet<bill>();
-            bills2 = new HashSet<bill>();
-            missionrequests = new HashSet<missionrequest>();
-            compentencies = new HashSet<compentency>();
-            employees = new HashSet<employee>();
-        }
-
         public int id { get; set; }
 
         [StringLength(255)]
@@ -65,5 +55,6 @@ namespace PiDev.Domain.Entity
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<employee> employees { get; set; }
+
     }
 }

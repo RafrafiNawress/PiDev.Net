@@ -1,18 +1,14 @@
-namespace PiDev.Domain.Entity
-{
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
+﻿using PiDev.Domain.Entity;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
 
-    [Table("pidev.bill")]
-    public partial class bill
+namespace PiDev.web.Models
+{
+    public class BillModel
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public bill()
-        {
-            missions = new HashSet<mission>();
-        }
 
         public int id { get; set; }
 

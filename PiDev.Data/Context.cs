@@ -4,14 +4,14 @@ namespace PiDev.Data
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
-    using Domain;
+    using Domain.Entity;
 
     public partial class Context : DbContext
     {
-        public Context()
+       /* public Context()
             : base("name=Context")
         {
-        }
+        }*/
 
         public virtual DbSet<bill> bills { get; set; }
         public virtual DbSet<commentaire> commentaires { get; set; }
