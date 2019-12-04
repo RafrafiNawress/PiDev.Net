@@ -1,4 +1,4 @@
-namespace PiDev.Domain.Entites
+namespace PiDev.Domain.Entities
 {
     using System;
     using System.Collections.Generic;

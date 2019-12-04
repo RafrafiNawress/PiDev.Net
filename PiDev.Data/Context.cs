@@ -1,8 +1,10 @@
 namespace PiDev.Data
 {
     using Domain.Entites;
+    using Domain.Entities;
     using System.Data.Entity;
 
+    [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
     public partial class Context : DbContext
     {
         public Context()
@@ -33,6 +35,7 @@ namespace PiDev.Data
         public virtual DbSet<team> teams { get; set; }
         public virtual DbSet<training> trainings { get; set; }
         public virtual DbSet<trainingcentre> trainingcentres { get; set; }
+        public virtual DbSet<claim> claims { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

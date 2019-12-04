@@ -8,7 +8,8 @@ namespace PiDev.web
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
+            app.MapSignalR();
+            //ConfigureAuth(app);
         }
     }
 }
