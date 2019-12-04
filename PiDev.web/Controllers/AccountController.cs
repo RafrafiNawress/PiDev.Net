@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using PiDev.Domain;
 using PiDev.web.Models;
 
 namespace PiDev.web.Controllers
@@ -15,6 +16,7 @@ namespace PiDev.web.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        public static employee employee;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 

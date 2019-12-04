@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PiDev.Service.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,10 @@ namespace PiDev.web.Controllers
     {
         public ActionResult Index()
         {
+            if (System.Web.HttpContext.Current.User == null)
+            {
+                RedirectToAction("Login", "Account");
+            }
             return View();
         }
 

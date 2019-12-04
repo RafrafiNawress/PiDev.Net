@@ -17,12 +17,13 @@
 
     @Styles.Render("~/template/css")
     @Scripts.Render("~/template/js")
+    @Scripts.Render("~/Scripts/competencies")
     @RenderSection("scripts", required: false)
 
     <meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
 
     <meta charset="utf-8">
-    <link rel="apple-touch-icon" sizes="76x76" href="src="~/Content/img/apple-icon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="src=" ~/Content/img/apple-icon.png">
     <link rel="icon" type="image/png" href="~/Content//img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>
@@ -56,44 +57,65 @@
     <meta property="og:site_name" content="Creative Tim">
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
-   
-    
+
+
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet">
     <!-- Google Tag Manager -->
-    
+
     <script async="" src="../../../www.googletagmanager.com/gtm5445.html?id=GTM-NKDMSK6"></script>
     <script>
-    (function(w, d, s, l, i) {
-      w[l] = w[l] || [];
-      w[l].push({
-        'gtm.start': new Date().getTime(),
-        event: 'gtm.js'
-      });
-      var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s),
-        dl = l != 'dataLayer' ? '&l=' + l : '';
-      j.async = true;
-      j.src =
-        '../../../www.googletagmanager.com/gtm5445.html?id=' + i + dl;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-NKDMSK6');
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                '../../../www.googletagmanager.com/gtm5445.html?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-NKDMSK6');
     </script>
     <!-- End Google Tag Manager -->
-   
+
     <script src="https://connect.facebook.net/signals/config/111649226022273?v=2.9.5&amp;r=stable" async=""></script>
     <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/38/11/intl/fr_ALL/common.js"></script>
     <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/38/11/intl/fr_ALL/util.js"></script>
+    <link href="https://kendo.cdn.telerik.com/2019.3.1023/styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="https://kendo.cdn.telerik.com/2019.3.1023/styles/kendo.default.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2019.3.1023/js/kendo.all.min.js"></script>
+    <script src="~/Scripts/Competencies.js"></script>
 </head>
 
 <body class="">
+
+    <button id="switcher" class="k-primary" style="cursor: pointer; position: absolute; top:20px;left:64%;z-index: 9999999" onclick="switchperspective()">Switch Perspective</button>
+    <iframe src="http://localhost:9080/pidev-web/pages/competencies/JobFamilies.xhtml" style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe>
     <!-- Extra details for Live View on GitHub Pages -->
     <!-- Google Tag Manager (noscript) -->
     <noscript>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
+    <script>
+        var net = true;
+        function switchperspective() {
+            if (net) {
+                var width = $(".wrapper").width();
+                $(".wrapper").css("clip", "rect(0px, 9999px, 9999px, " + width + "px)");
+            } else {
+
+                $(".wrapper").css("clip", "rect(0px, 9999px, 9999px, 0px)");
+            }
+            net = !net;
+        }
+    </script>
     <!-- End Google Tag Manager (noscript) -->
-    <div class="wrapper ">
+    <div class="wrapper " style="transition: .8s;height: 100%;width: 100%;overflow-x: hidden; clip: rect(0px,9999px, 9999px, 0px); position:absolute; top:0; left:0;">
         <div class="sidebar" data-color="rose" data-background-color="black" data-image="../assets/img/sidebar-1.jpg">
             <!--
                 Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
@@ -434,10 +456,10 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="widgets.html">
+                    <li class="nav-item employees-link">
+                        <a class="nav-link" href="@Url.Action("Index", "Competency")">
                             <i class="material-icons">widgets</i>
-                            <p> Widgets </p>
+                            <p> Employees </p>
                         </a>
                     </li>
                     <li class="nav-item ">
@@ -447,7 +469,7 @@
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="calendar.html">
+                        <a class="nav-link" >
                             <i class="material-icons">date_range</i>
                             <p> Calendar </p>
                         </a>
@@ -457,7 +479,7 @@
             </div>
             <div class="sidebar-background" style="background-image: url(../assets/img/sidebar-1.jpg) "></div>
         </div>
-        <div class="main-panel ps-container ps-theme-default ps-active-y" data-ps-id="9727b7e9-5738-4b4b-0a6b-82ed9aa92c42">
+        <div class="main-panel ps-container ps-theme-default ps-active-y" data-ps-id="9727b7e9-5738-4b4b-0a6b-82ed9aa92c42" style="background-color: #e9ecef">
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                 <div class="container-fluid">
@@ -566,13 +588,15 @@
                     <div class="copyright float-right">
                         ©
                         <script>
-                          document.write(new Date().getFullYear())
-                        </script>2019, made with <i class="material-icons">favorite</i> by
+                            document.write(new Date().getFullYear())
+                        </script>2019, made with
+                        <i class="material-icons">favorite</i> by
                         <a href="https://www.creative-tim.com/" target="_blank">Creative Tim</a> for a better web.
                     </div>
                 </div>
             </footer>
-            <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; right: 0px; height: 657px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 625px;"></div></div>
+            <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div>
+            <div class="ps-scrollbar-y-rail" style="top: 0px; right: 0px; height: 657px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 625px;"></div></div>
         </div>
     </div>
     <div class="fixed-plugin">
@@ -677,277 +701,278 @@
             </ul>
         </div>
     </div>
-   
+
     <!-- Material Dashboard DEMO methods, don't include it in your project! -->
     <script src="../assets/demo/demo.js"></script>
     <script>
-                $(document).ready(function() {
-                  $().ready(function() {
-                    $sidebar = $('.sidebar');
+        $(document).ready(function () {
+            $().ready(function () {
+                $sidebar = $('.sidebar');
 
-                    $sidebar_img_container = $sidebar.find('.sidebar-background');
+                $sidebar_img_container = $sidebar.find('.sidebar-background');
 
-                    $full_page = $('.full-page');
+                $full_page = $('.full-page');
 
-                    $sidebar_responsive = $('body > .navbar-collapse');
+                $sidebar_responsive = $('body > .navbar-collapse');
 
-                    window_width = $(window).width();
+                window_width = $(window).width();
 
-                    fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+                fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
 
-                    if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
-                      if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
+                if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
+                    if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
                         $('.fixed-plugin .dropdown').addClass('open');
-                      }
-
                     }
 
-                    $('.fixed-plugin a').click(function(event) {
-                      // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
-                      if ($(this).hasClass('switch-trigger')) {
+                }
+
+                $('.fixed-plugin a').click(function (event) {
+                    // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+                    if ($(this).hasClass('switch-trigger')) {
                         if (event.stopPropagation) {
-                          event.stopPropagation();
+                            event.stopPropagation();
                         } else if (window.event) {
-                          window.event.cancelBubble = true;
+                            window.event.cancelBubble = true;
                         }
-                      }
-                    });
+                    }
+                });
 
-                    $('.fixed-plugin .active-color span').click(function() {
-                      $full_page_background = $('.full-page-background');
+                $('.fixed-plugin .active-color span').click(function () {
+                    $full_page_background = $('.full-page-background');
 
-                      $(this).siblings().removeClass('active');
-                      $(this).addClass('active');
+                    $(this).siblings().removeClass('active');
+                    $(this).addClass('active');
 
-                      var new_color = $(this).data('color');
+                    var new_color = $(this).data('color');
 
-                      if ($sidebar.length != 0) {
+                    if ($sidebar.length != 0) {
                         $sidebar.attr('data-color', new_color);
-                      }
+                    }
 
-                      if ($full_page.length != 0) {
+                    if ($full_page.length != 0) {
                         $full_page.attr('filter-color', new_color);
-                      }
+                    }
 
-                      if ($sidebar_responsive.length != 0) {
+                    if ($sidebar_responsive.length != 0) {
                         $sidebar_responsive.attr('data-color', new_color);
-                      }
-                    });
+                    }
+                });
 
-                    $('.fixed-plugin .background-color .badge').click(function() {
-                      $(this).siblings().removeClass('active');
-                      $(this).addClass('active');
+                $('.fixed-plugin .background-color .badge').click(function () {
+                    $(this).siblings().removeClass('active');
+                    $(this).addClass('active');
 
-                      var new_color = $(this).data('background-color');
+                    var new_color = $(this).data('background-color');
 
-                      if ($sidebar.length != 0) {
+                    if ($sidebar.length != 0) {
                         $sidebar.attr('data-background-color', new_color);
-                      }
-                    });
+                    }
+                });
 
-                    $('.fixed-plugin .img-holder').click(function() {
-                      $full_page_background = $('.full-page-background');
+                $('.fixed-plugin .img-holder').click(function () {
+                    $full_page_background = $('.full-page-background');
 
-                      $(this).parent('li').siblings().removeClass('active');
-                      $(this).parent('li').addClass('active');
+                    $(this).parent('li').siblings().removeClass('active');
+                    $(this).parent('li').addClass('active');
 
 
-                      var new_image = $(this).find("img").attr('src');
+                    var new_image = $(this).find("img").attr('src');
 
-                      if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-                        $sidebar_img_container.fadeOut('fast', function() {
-                          $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-                          $sidebar_img_container.fadeIn('fast');
+                    if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+                        $sidebar_img_container.fadeOut('fast', function () {
+                            $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+                            $sidebar_img_container.fadeIn('fast');
                         });
-                      }
+                    }
 
-                      if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+                    if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
                         var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
 
-                        $full_page_background.fadeOut('fast', function() {
-                          $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-                          $full_page_background.fadeIn('fast');
+                        $full_page_background.fadeOut('fast', function () {
+                            $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+                            $full_page_background.fadeIn('fast');
                         });
-                      }
+                    }
 
-                      if ($('.switch-sidebar-image input:checked').length == 0) {
+                    if ($('.switch-sidebar-image input:checked').length == 0) {
                         var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
                         var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
 
                         $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
                         $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-                      }
+                    }
 
-                      if ($sidebar_responsive.length != 0) {
+                    if ($sidebar_responsive.length != 0) {
                         $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
-                      }
-                    });
+                    }
+                });
 
-                    $('.switch-sidebar-image input').change(function() {
-                      $full_page_background = $('.full-page-background');
+                $('.switch-sidebar-image input').change(function () {
+                    $full_page_background = $('.full-page-background');
 
-                      $input = $(this);
+                    $input = $(this);
 
-                      if ($input.is(':checked')) {
+                    if ($input.is(':checked')) {
                         if ($sidebar_img_container.length != 0) {
-                          $sidebar_img_container.fadeIn('fast');
-                          $sidebar.attr('data-image', '#');
+                            $sidebar_img_container.fadeIn('fast');
+                            $sidebar.attr('data-image', '#');
                         }
 
                         if ($full_page_background.length != 0) {
-                          $full_page_background.fadeIn('fast');
-                          $full_page.attr('data-image', '#');
+                            $full_page_background.fadeIn('fast');
+                            $full_page.attr('data-image', '#');
                         }
 
                         background_image = true;
-                      } else {
+                    } else {
                         if ($sidebar_img_container.length != 0) {
-                          $sidebar.removeAttr('data-image');
-                          $sidebar_img_container.fadeOut('fast');
+                            $sidebar.removeAttr('data-image');
+                            $sidebar_img_container.fadeOut('fast');
                         }
 
                         if ($full_page_background.length != 0) {
-                          $full_page.removeAttr('data-image', '#');
-                          $full_page_background.fadeOut('fast');
+                            $full_page.removeAttr('data-image', '#');
+                            $full_page_background.fadeOut('fast');
                         }
 
                         background_image = false;
-                      }
-                    });
+                    }
+                });
 
-                    $('.switch-sidebar-mini input').change(function() {
-                      $body = $('body');
+                $('.switch-sidebar-mini input').change(function () {
+                    $body = $('body');
 
-                      $input = $(this);
+                    $input = $(this);
 
-                      if (md.misc.sidebar_mini_active == true) {
+                    if (md.misc.sidebar_mini_active == true) {
                         $('body').removeClass('sidebar-mini');
                         md.misc.sidebar_mini_active = false;
 
                         $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
 
-                      } else {
+                    } else {
 
                         $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
 
-                        setTimeout(function() {
-                          $('body').addClass('sidebar-mini');
+                        setTimeout(function () {
+                            $('body').addClass('sidebar-mini');
 
-                          md.misc.sidebar_mini_active = true;
+                            md.misc.sidebar_mini_active = true;
                         }, 300);
-                      }
+                    }
 
-                      // we simulate the window Resize so the charts will get updated in realtime.
-                      var simulateWindowResize = setInterval(function() {
+                    // we simulate the window Resize so the charts will get updated in realtime.
+                    var simulateWindowResize = setInterval(function () {
                         window.dispatchEvent(new Event('resize'));
-                      }, 180);
+                    }, 180);
 
-                      // we stop the simulation of Window Resize after the animations are completed
-                      setTimeout(function() {
+                    // we stop the simulation of Window Resize after the animations are completed
+                    setTimeout(function () {
                         clearInterval(simulateWindowResize);
-                      }, 1000);
+                    }, 1000);
 
-                    });
-                  });
                 });
+            });
+        });
     </script>
     <!-- Sharrre libray -->
     <script src="../assets/demo/jquery.sharrre.js"></script>
     <script>
-                $(document).ready(function() {
+        $(document).ready(function () {
 
 
-                  $('#facebook').sharrre({
-                    share: {
-                      facebook: true
-                    },
-                    enableHover: false,
-                    enableTracking: false,
-                    enableCounter: false,
-                    click: function(api, options) {
-                      api.simulateClick();
-                      api.openPopup('facebook');
-                    },
-                    template: '<i class="fab fa-facebook-f"></i> Facebook',
-                    url: 'https://demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html'
-                  });
+            $('#facebook').sharrre({
+                share: {
+                    facebook: true
+                },
+                enableHover: false,
+                enableTracking: false,
+                enableCounter: false,
+                click: function (api, options) {
+                    api.simulateClick();
+                    api.openPopup('facebook');
+                },
+                template: '<i class="fab fa-facebook-f"></i> Facebook',
+                url: 'https://demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html'
+            });
 
-                  $('#google').sharrre({
-                    share: {
-                      googlePlus: true
-                    },
-                    enableCounter: false,
-                    enableHover: false,
-                    enableTracking: true,
-                    click: function(api, options) {
-                      api.simulateClick();
-                      api.openPopup('googlePlus');
-                    },
-                    template: '<i class="fab fa-google-plus"></i> Google',
-                    url: 'https://demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html'
-                  });
+            $('#google').sharrre({
+                share: {
+                    googlePlus: true
+                },
+                enableCounter: false,
+                enableHover: false,
+                enableTracking: true,
+                click: function (api, options) {
+                    api.simulateClick();
+                    api.openPopup('googlePlus');
+                },
+                template: '<i class="fab fa-google-plus"></i> Google',
+                url: 'https://demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html'
+            });
 
-                  $('#twitter').sharrre({
-                    share: {
-                      twitter: true
-                    },
-                    enableHover: false,
-                    enableTracking: false,
-                    enableCounter: false,
-                    buttons: {
-                      twitter: {
+            $('#twitter').sharrre({
+                share: {
+                    twitter: true
+                },
+                enableHover: false,
+                enableTracking: false,
+                enableCounter: false,
+                buttons: {
+                    twitter: {
                         via: 'CreativeTim'
-                      }
-                    },
-                    click: function(api, options) {
-                      api.simulateClick();
-                      api.openPopup('twitter');
-                    },
-                    template: '<i class="fab fa-twitter"></i> Twitter',
-                    url: 'https://demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html'
-                  });
+                    }
+                },
+                click: function (api, options) {
+                    api.simulateClick();
+                    api.openPopup('twitter');
+                },
+                template: '<i class="fab fa-twitter"></i> Twitter',
+                url: 'https://demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html'
+            });
 
-                  // Facebook Pixel Code Don't Delete
-                  ! function(f, b, e, v, n, t, s) {
-                    if (f.fbq) return;
-                    n = f.fbq = function() {
-                      n.callMethod ?
+            // Facebook Pixel Code Don't Delete
+            ! function (f, b, e, v, n, t, s) {
+                if (f.fbq) return;
+                n = f.fbq = function () {
+                    n.callMethod ?
                         n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-                    };
-                    if (!f._fbq) f._fbq = n;
-                    n.push = n;
-                    n.loaded = !0;
-                    n.version = '2.0';
-                    n.queue = [];
-                    t = b.createElement(e);
-                    t.async = !0;
-                    t.src = v;
-                    s = b.getElementsByTagName(e)[0];
-                    s.parentNode.insertBefore(t, s)
-                  }(window,
-                    document, 'script', '../../../connect.facebook.net/en_US/fbevents.js');
+                };
+                if (!f._fbq) f._fbq = n;
+                n.push = n;
+                n.loaded = !0;
+                n.version = '2.0';
+                n.queue = [];
+                t = b.createElement(e);
+                t.async = !0;
+                t.src = v;
+                s = b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t, s)
+            }(window,
+                document, 'script', '../../../connect.facebook.net/en_US/fbevents.js');
 
-                  try {
-                    fbq('init', '111649226022273');
-                    fbq('track', "PageView");
+            try {
+                fbq('init', '111649226022273');
+                fbq('track', "PageView");
 
-                  } catch (err) {
-                    console.log('Facebook Track Error:', err);
-                  }
+            } catch (err) {
+                console.log('Facebook Track Error:', err);
+            }
 
-                });
+        });
     </script>
     <noscript>
         <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=111649226022273&amp;ev=PageView&amp;noscript=1" />
     </noscript>
     <script>
-                $(document).ready(function() {
-                  // Javascript method's body can be found in assets/js/demos.js
-                  md.initDashboardPageCharts();
 
-                  md.initVectorMap();
+        $(document).ready(function () {
+            // Javascript method's body can be found in assets/js/demos.js
+            md.initDashboardPageCharts();
 
-                });
+            md.initVectorMap();
+
+        });
     </script>
 
 
