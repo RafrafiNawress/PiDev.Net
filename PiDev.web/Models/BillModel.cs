@@ -28,6 +28,10 @@ namespace PiDev.web.Models
 
         public int somme { get; set; }
 
+        public bill heb { get; set; }
+        public bill trans { get; set; }
+        public bill restau { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<mission> missions { get; set; }
 

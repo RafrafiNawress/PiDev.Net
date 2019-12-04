@@ -12,10 +12,7 @@ namespace PiDev.Domain.Entity
         public mission()
         {
             bills = new HashSet<bill>();
-            bills1 = new HashSet<bill>();
-            bills2 = new HashSet<bill>();
             missionrequests = new HashSet<missionrequest>();
-            compentencies = new HashSet<compentency>();
             employees = new HashSet<employee>();
         }
 
@@ -40,28 +37,15 @@ namespace PiDev.Domain.Entity
 
         public int valide { get; set; }
 
-        public int? bill_id { get; set; }
-
         public int? idProject { get; set; }
-
-        public virtual bill bill { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<bill> bills { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<bill> bills1 { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<bill> bills2 { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<missionrequest> missionrequests { get; set; }
 
         public virtual project project { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<compentency> compentencies { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<employee> employees { get; set; }

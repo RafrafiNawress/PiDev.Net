@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using PiDev.Service;
 using PiDev.Data;
+using System.Net.Http;
+using PiDev.web.Models;
 
 namespace PiDev.web.Controllers
 {
@@ -16,7 +18,7 @@ namespace PiDev.web.Controllers
         //GET: Mission Project
         public ActionResult MissionByProject()
         {
-            var mission = db.bills.FirstOrDefault();
+            //var mission = db.bills.FirstOrDefault();
 
 
             return View(cs.GetMany().ToList());
@@ -24,9 +26,15 @@ namespace PiDev.web.Controllers
 
 
         // GET: Bill/Create
-        public ActionResult CreateBill()
+        public ActionResult CreateBill(BillModel b)
         {
-            return View();
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://localhost:9080/pidev-web/");
+
+            // TODO: Add insert logic here
+            client.PostAsJsonAsync<BillModel>("api/Requestmission", b)
+                    .ContinueWith((postTask) => postTask.Result.ReasonPhrase.Equals("Created"));
+            return RedirectToAction("Index");
         }
     }
 }

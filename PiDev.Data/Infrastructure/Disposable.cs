@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SN.Data.Infrastructure
+namespace PiDev.Data.Infrastructure
 {
     public class Disposable : IDisposable
     {

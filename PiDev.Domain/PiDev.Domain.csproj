@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{449DC901-2878-4FB5-B81E-8CDC1AEECEA8}</ProjectGuid>
+    <ProjectGuid>{15F5F0F7-5AAB-48D6-B1FF-8CB4862D30D2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PiDev.Domain</RootNamespace>
@@ -30,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -44,7 +52,6 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Entity\bill.cs" />
     <Compile Include="Entity\commentaire.cs" />
-    <Compile Include="Entity\compentency.cs" />
     <Compile Include="Entity\competency.cs" />
     <Compile Include="Entity\criterion.cs" />
     <Compile Include="Entity\employee.cs" />
@@ -60,8 +67,6 @@
     <Compile Include="Entity\missionrequest.cs" />
     <Compile Include="Entity\notification.cs" />
     <Compile Include="Entity\plan.cs" />
-    <Compile Include="Entity\planifiedtraining.cs" />
-    <Compile Include="Entity\planing.cs" />
     <Compile Include="Entity\project.cs" />
     <Compile Include="Entity\reclamation.cs" />
     <Compile Include="Entity\request.cs" />
@@ -72,7 +77,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

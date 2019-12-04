@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace SN.Data.Infrastructure
+namespace PiDev.Data.Infrastructure
 {
     public interface IUnitOfWork : IDisposable
     {

@@ -30,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -41,7 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BillService.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="IBillService.cs" />
     <Compile Include="IMissionService.cs" />
     <Compile Include="MissionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -52,7 +62,7 @@
       <Name>PiDev.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\PiDev.Domain\PiDev.Domain.csproj">
-      <Project>{449dc901-2878-4fb5-b81e-8cdc1aeecea8}</Project>
+      <Project>{15f5f0f7-5aab-48d6-b1ff-8cb4862d30d2}</Project>
       <Name>PiDev.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\PiDev.ServicePattern\PiDev.ServicePattern.csproj">
@@ -62,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

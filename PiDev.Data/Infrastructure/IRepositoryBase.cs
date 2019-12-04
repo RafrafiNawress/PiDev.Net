@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SN.Data.Infrastructure
+namespace PiDev.Data.Infrastructure
 {
     public interface IRepositoryBase<T>
      where T : class

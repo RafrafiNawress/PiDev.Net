@@ -4,18 +4,17 @@ namespace PiDev.Data
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
-    using Domain.Entity;
+    using PiDev.Domain.Entity;
 
     public partial class Context : DbContext
     {
-       /* public Context()
-            : base("name=Context")
+        public Context()
+            : base("name=Context1")
         {
-        }*/
+        }
 
         public virtual DbSet<bill> bills { get; set; }
         public virtual DbSet<commentaire> commentaires { get; set; }
-        public virtual DbSet<compentency> compentencies { get; set; }
         public virtual DbSet<competency> competencies { get; set; }
         public virtual DbSet<criterion> criteria { get; set; }
         public virtual DbSet<employee> employees { get; set; }
@@ -31,8 +30,6 @@ namespace PiDev.Data
         public virtual DbSet<missionrequest> missionrequests { get; set; }
         public virtual DbSet<notification> notifications { get; set; }
         public virtual DbSet<plan> plans { get; set; }
-        public virtual DbSet<planifiedtraining> planifiedtrainings { get; set; }
-        public virtual DbSet<planing> planings { get; set; }
         public virtual DbSet<project> projects { get; set; }
         public virtual DbSet<reclamation> reclamations { get; set; }
         public virtual DbSet<request> requests { get; set; }
@@ -50,11 +47,6 @@ namespace PiDev.Data
             modelBuilder.Entity<bill>()
                 .Property(e => e.matricule)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<bill>()
-                .HasMany(e => e.missions)
-                .WithOptional(e => e.bill)
-                .HasForeignKey(e => e.bill_id);
 
             modelBuilder.Entity<competency>()
                 .Property(e => e.description)
@@ -78,22 +70,6 @@ namespace PiDev.Data
                 .IsUnicode(false);
 
             modelBuilder.Entity<employee>()
-                .Property(e => e.nom)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<employee>()
-                .Property(e => e.password)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<employee>()
-                .Property(e => e.prenom)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<employee>()
-                .Property(e => e.role)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<employee>()
                 .Property(e => e.firstname)
                 .IsUnicode(false);
 
@@ -102,7 +78,15 @@ namespace PiDev.Data
                 .IsUnicode(false);
 
             modelBuilder.Entity<employee>()
+                .Property(e => e.password)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<employee>()
                 .Property(e => e.photo)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<employee>()
+                .Property(e => e.role)
                 .IsUnicode(false);
 
             modelBuilder.Entity<employee>()
@@ -207,27 +191,12 @@ namespace PiDev.Data
             modelBuilder.Entity<mission>()
                 .HasMany(e => e.bills)
                 .WithOptional(e => e.mission)
-                .HasForeignKey(e => e.mission_id);
-
-            modelBuilder.Entity<mission>()
-                .HasMany(e => e.bills1)
-                .WithOptional(e => e.mission1)
-                .HasForeignKey(e => e.idBill);
-
-            modelBuilder.Entity<mission>()
-                .HasMany(e => e.bills2)
-                .WithOptional(e => e.mission2)
                 .HasForeignKey(e => e.idMission);
 
             modelBuilder.Entity<mission>()
                 .HasMany(e => e.missionrequests)
                 .WithOptional(e => e.mission)
                 .HasForeignKey(e => e.mission_id);
-
-            modelBuilder.Entity<mission>()
-                .HasMany(e => e.compentencies)
-                .WithMany(e => e.missions)
-                .Map(m => m.ToTable("compentency_mission", "pidev").MapLeftKey("missions_id").MapRightKey("skill_id"));
 
             modelBuilder.Entity<mission>()
                 .HasMany(e => e.employees)
@@ -282,11 +251,11 @@ namespace PiDev.Data
                 .IsUnicode(false);
 
             modelBuilder.Entity<task>()
-                .Property(e => e.title)
+                .Property(e => e.status)
                 .IsUnicode(false);
 
             modelBuilder.Entity<task>()
-                .Property(e => e.status)
+                .Property(e => e.title)
                 .IsUnicode(false);
 
             modelBuilder.Entity<training>()

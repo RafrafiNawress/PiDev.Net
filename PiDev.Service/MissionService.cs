@@ -1,6 +1,6 @@
-﻿using PiDev.Domain.Entity;
+﻿using PiDev.Data.Infrastructure;
+using PiDev.Domain.Entity;
 using PiDev.ServicePattern;
-using SN.Data.Infrastructure;
 using System.Collections.Generic;
 
 namespace PiDev.Service
@@ -14,6 +14,8 @@ namespace PiDev.Service
 
 
         }
+
+     
 
         public IEnumerable<mission> GetMissionByIdProject(int ProjectId)
         {

@@ -4,9 +4,10 @@ namespace PiDev.Domain.Entity
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    //using System.Data.Entity.Spatial;
 
-    [Table("pidev.planing")]
-    public partial class planing
+    [Table("pidev.followedup")]
+    public partial class followedup
     {
         public int id { get; set; }
     }

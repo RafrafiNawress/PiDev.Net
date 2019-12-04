@@ -1,4 +1,7 @@
-﻿using PiDev.Domain.Entity;
+﻿
+using PiDev.Domain.Entity;
+using PiDev.Service;
+using PiDev.web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +13,15 @@ namespace PiDev.web.Controllers
 {
     public class MissionWSController : Controller
     {
-        // GET: MissionWS
+        private BillService cs = new BillService();
+
+
         public ActionResult Index()
         {
             HttpClient Client = new HttpClient();
             Client.BaseAddress = new Uri("http://localhost:9080/pidev-web/");
             Client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("Application/json"));
-            HttpResponseMessage response = Client.GetAsync("api/mission/project/1").Result;
+            HttpResponseMessage response = Client.GetAsync("api/mission").Result;
             if (response.IsSuccessStatusCode)
             {
                 IEnumerable<mission> missions = response.Content.ReadAsAsync<IEnumerable<mission>>().Result;
@@ -32,7 +37,7 @@ namespace PiDev.web.Controllers
         }
 
 
-        // GET: Project/Delete/5
+        // GET: Mission/Delete/5
         public ActionResult Delete(int id)
         {
             HttpClient client = new HttpClient();
@@ -54,7 +59,7 @@ namespace PiDev.web.Controllers
            return View(mission);
         }
 
-        // POST: mission/Delete/5
+        // POST: Mission/Delete/5
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmation(int id, FormCollection collection)
         {
@@ -75,6 +80,86 @@ namespace PiDev.web.Controllers
                 return View();
             }
         }
+        /*
+                [HttpPost, ActionName("Create")]
+                public ActionResult Create(BillModel p , int idMission)
+                {
+                    HttpClient client = new HttpClient();
+                    client.BaseAddress = new Uri("http://localhost:9080/pidev-web/");
 
+                    // TODO: Add insert logic here
+                    client.PostAsJsonAsync<BillModel>("api/Requestmission/17", p)
+                            .ContinueWith((postTask) => postTask.Result.ReasonPhrase.Equals("Created"));
+
+                    var tuple = new Tuple<mission, BillModel>(new mission(), p);
+                    //return RedirectToAction("Index");
+                    return View(tuple);
+                }*/
+
+        //  private BillModel resto, heb, trans;
+        
+        public ActionResult Create(int mission, int restau = 0,  int heb = 0, int trans = 0)
+        {
+            if (heb != 0)
+            {
+                bill hebergement = new bill()
+                {
+                    idMission = mission,
+                    somme = heb,
+                    matricule = "Hebergement"
+                };
+                cs.Add(hebergement);
+            }
+            if (restau != 0)
+            {
+                bill restauration = new bill()
+                {
+                    idMission = mission,
+                    somme = restau,
+                    matricule = "Restauration"
+                };
+                cs.Add(restauration);
+            }
+            if (trans != 0)
+            {
+                bill transport = new bill()
+                {
+                    idMission = mission,
+                    somme = restau,
+                    matricule = "Transport"
+                };
+                cs.Add(transport);
+            }
+            //resto.matricule = "Restauration";
+            //resto.mission_id = 17;
+            //resto.date= DateTime.Now;
+            //heb.matricule = "Hebergement";
+            //heb.mission_id = 17;
+            //heb.date = DateTime.Now;
+            //trans.matricule = "Transport";
+            //trans.mission_id = 17;
+            //trans.date = DateTime.Now;
+            /* resto.setMission(missionService.getMissionById(idmission));
+             resto.setDate(new Date());
+             heb.setMatricule("Hebergement");
+             heb.setMission(missionService.getMissionById(idmission));
+             heb.setDate(new Date());
+             trans.setMatricule("Transport");
+             trans.setMission(missionService.getMissionById(idmission));
+             trans.setDate(new Date());
+             cs.addBill(resto.getSomme() == 0 ? null : resto, heb.getSomme() == 0 ? null : heb, trans.getSomme() == 0 ? null : trans);
+     */
+            //if (resto.somme==0)
+            //cs.Add(resto);
+            //if (heb.somme != 0)
+            //    cs.Add(heb);
+            //if (trans.somme != 0)
+            //    cs.Add(trans);
+            cs.Commit();
+            //return RedirectToAction("Index");
+            var tuple = new Tuple<mission, BillModel>(new mission(), new BillModel());
+            return RedirectToAction("Index");
+          // return View(tuple);
+        }
     }
 }
