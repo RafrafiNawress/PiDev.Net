@@ -18,14 +18,9 @@ namespace PiDev.web.Controllers
             return View();
         }
 
-        public string GetEmployees()
-        {
-            string result = "[";
-            using(Context c = new Context())
-            {
-                result = new JavaScriptSerializer().Serialize(c.employees.Select(x=> new { id=x.id, firstName= x.firstname, lastName=x.lastname}).ToList());
-            }
-            return result;
+        public string GetEmployees(int jobId)
+        { 
+            return _service.GetEmployees(jobId);
         }
 
         public string GetJobs()
@@ -36,6 +31,12 @@ namespace PiDev.web.Controllers
         public string GetJobCompetencies(int id)
         {
             return _service.GetJobCompetencies(id);
+        }
+
+        [HttpPost]
+        public void AssignJob(int empId, int jobId)
+        {
+            _service.AssignJob(empId, jobId);
         }
     }
 }

@@ -1,4 +1,4 @@
-namespace PiDev.Domain
+﻿namespace PiDev.Domain
 {
     using System;
     using System.Collections.Generic;

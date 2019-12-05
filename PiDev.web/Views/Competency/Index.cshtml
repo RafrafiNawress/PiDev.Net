@@ -3,12 +3,105 @@
     ViewBag.Title = "Employees";
     Layout = "~/Views/Shared/_LayoutAdvyTeam.cshtml";
 }
+<span id="notification" style="display:none;"></span>
+<script id="successTemplate" type="text/x-kendo-template">
+    <div class="upload-success">
+        <h3>#= message #</h3>
+    </div>
+</script>
 
-<div id="employees-list"></div>
+<div id="job-filter" style="float: right; margin-right: 70px;"></div>
+
+<div id="employees-list" style="position: relative; top:50px;"></div>
 <div id="employee-details" style="display: none">
-    <button id="back" class="k-primary" style="cursor: pointer;">Back</button>
+    <button id="back" class="btn-primary" style="cursor: pointer;">Back</button>
     <div id="employee-job" style="position: relative; top:150px;left: 10px;"></div>
     <span id="employee-name" style="position: absolute; top:185px;left: 80px; color: black; font-size: 24px;"></span>
 
     <div id="competencies-list" style="position:relative; margin-top:200px;"></div>
+
+
+    <button id="save" class="btn-success" style="cursor: pointer; float:right;margin-right:50px;margin-top:30px; display: none;">Save</button>
 </div>
+
+<style>
+    .demo-section p {
+        margin: 3px 0 20px;
+        line-height: 50px;
+    }
+
+    .demo-section .k-button {
+        width: 250px;
+    }
+
+
+    /* Notifications */
+    .k-notification h3 {
+        padding: 10px 10px 5px;
+        font-size: 1.5em;
+        line-height: normal;
+        font-weight: 400;
+    }
+
+    .k-notification img {
+        margin: 20px;
+        float: left;
+    }
+
+
+    /* Info template */
+    .new-mail {
+        width: 300px;
+        height: 100px;
+    }
+
+    /* Error template */
+    .wrong-pass {
+        width: 300px;
+        height: 100px;
+    }
+
+    /* Success template */
+    .upload-success {
+        width: 300px;
+        height: 60px;
+    }
+
+
+    /* For Bootstrap v4 theme */
+    .k-bootstrap-v4 .k-notification h3 {
+        padding: 10px 10px 5px;
+    }
+
+    .k-bootstrap-v4 .k-notification img {
+        margin: 10px 20px 0 0;
+    }
+
+    .k-bootstrap-v4 .new-mail,
+    .k-bootstrap-v4 .wrong-pass,
+    .k-bootstrap-v4 .upload-success {
+        width: calc( 300px - 2.5rem );
+        height: calc( 100px - 1.5rem );
+    }
+
+
+    /* For Material v2 theme */
+    .k-material-v2 .k-notification h3 {
+        padding: 10px 10px 5px;
+    }
+
+    .k-material-v2 .k-notification img {
+        margin: 10px 20px 0 0;
+    }
+
+    .k-notification-success {
+        background-color: #24b400c9 !important;
+    }
+
+    .k-material-v2 .new-mail,
+    .k-material-v2 .wrong-pass,
+    .k-material-v2 .upload-success {
+        width: 270px;
+        height: 70px;
+    }
+</style>
