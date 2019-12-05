@@ -1,0 +1,122 @@
+﻿@model PiDev.web.Models.evaluationsheet
+
+@{
+    ViewBag.Title = "stat";
+    Layout = "~/Views/Shared/_LayoutAdvyTeam.cshtml";
+}
+
+<h2>stat</h2>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header card-header-icon card-header-info">
+                            <div class="card-icon">
+                                <i class="material-icons">timeline</i>
+                            </div>
+                            <h4 class="card-title">
+                                Coloured Line Chart
+                                <small> - Rounded</small>
+                            </h4>
+                        </div>
+                        <div class="card-body">
+                            <div id="colouredRoundedLineChart" class="ct-chart"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header card-header-icon card-header-rose">
+                            <div class="card-icon">
+                                <i class="material-icons">insert_chart</i>
+                            </div>
+                            <h4 class="card-title">
+                                Multiple Bars Chart
+                                <small>- Bar Chart</small>
+                            </h4>
+                        </div>
+                        <div class="card-body">
+                            <div id="multipleBarsChart" class="ct-chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="@Url.Content("~/assets/js/plugins/jquery-jvectormap.js")"></script>
+    <script src="@Url.Content("~/Content/js/chartlist.min.js")"></script>
+
+<script src="@Url.Content("~/assets/js/plugins/jquery-jvectormap.js")"></script>
+<script>
+        $(document).ready(function () {
+            var lineChartLabels = "@ViewBag.lineStatsLabels.ToUpper()";
+            var lineChartValues = "@ViewBag.lineStatsValues.ToUpper()";
+
+            var barChartLabels = "@ViewBag.barStatsLabels.ToUpper()";
+            var barChartValues = "@ViewBag.barStatsValues.ToUpper()";
+            // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
+
+            var dataMultipleBarsChart = {
+                labels: barChartLabels.split("|"),
+                series: [ barChartValues.replace(/,/g, '.').split('|').map(n => Number(n)) ]
+            };
+
+
+            var optionsMultipleBarsChart = {
+                seriesBarDistance: 10,
+                axisX: {
+                    showGrid: false
+                },
+                high : 100,
+                height: '300px'
+            };
+
+            var responsiveOptionsMultipleBarsChart = [
+                ['screen and (max-width: 640px)', {
+                    seriesBarDistance: 5,
+                    axisX: {
+                        labelInterpolationFnc: function (value) {
+                            return value[0];
+                        }
+                    }
+                }]
+            ];
+
+            var multipleBarsChart = Chartist.Bar('#multipleBarsChart', dataMultipleBarsChart, optionsMultipleBarsChart, responsiveOptionsMultipleBarsChart);
+
+
+            dataColouredRoundedLineChart = {
+                labels: lineChartLabels.split("|"),
+                series: [lineChartValues.replace(/,/g, '.').split('|').map(n => Number(n))]
+            };
+
+            optionsColouredRoundedLineChart = {
+                lineSmooth: Chartist.Interpolation.cardinal({
+                    tension: 10
+                }),
+                axisY: {
+                    showGrid: true,
+                    offset: 40
+                },
+                axisX: {
+                    showGrid: false,
+                },
+                low: 0,
+                high: 500,
+                showPoint: true,
+                height: '300px'
+            };
+
+
+            var colouredRoundedLineChart = new Chartist.Line('#colouredRoundedLineChart', dataColouredRoundedLineChart, optionsColouredRoundedLineChart);
+
+
+        });
+</script>
+}

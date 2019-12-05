@@ -18,6 +18,11 @@ namespace PiDev.web
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                "Delete",                                              // Route name
+                "{Evaluation}/{deletCritere}/{id}",                           // URL with parameters
+                new { controller = "Evaluation", action = "deletCritere", id = "200000" }  // Parameter defaults
+            );
         }
     }
 }

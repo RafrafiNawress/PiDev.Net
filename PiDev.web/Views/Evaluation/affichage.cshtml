@@ -1,0 +1,46 @@
+﻿@model IEnumerable<PiDev.web.Models.evaluationsheet>
+
+@{
+    ViewBag.Title = "affichage";
+}
+
+<h2>affichage</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Score)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.typeevaluation)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in ViewBag.Result)
+    {
+        <tr>
+            <td>
+                @item.Score
+            </td>
+            <td>
+               @item.date
+            </td>
+            <td>
+                @item.typeevaluation
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>

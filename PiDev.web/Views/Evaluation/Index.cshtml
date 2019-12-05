@@ -1,0 +1,155 @@
+﻿<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">assignment</i>
+                        </div>
+                        <h4 class="card-title">DataTables.net</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="toolbar">
+                            <!--        Here you can write extra buttons/actions for the toolbar              -->
+                        </div>
+                        <div class="material-datatables">
+                            <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+
+                                <thead>
+                                    <tr>
+                                        <th>Employee</th>
+                                        <th>Score</th>
+                                        <th>Type</th>
+
+                                        <th>Date</th>
+                                        <th>Criteria</th>
+                                        <th>Rating</th>
+                                        <th class="disabled-sorting text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Employee</th>
+                                        <th>Score</th>
+                                        <th>Type</th>
+
+                                        <th>Date</th>
+                                        <th>Criteria</th>
+
+
+
+                                        <th class="text-right">Actions</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    @foreach (var item in ViewBag.Result)
+                                    {
+
+
+
+
+                                        <tr>
+                                            @if (item.employee != null)
+                                            {
+                                                <td>@item.employee.firstname</td>
+                                            }
+                                            else
+                                            {
+                                                <td></td>
+                                            }
+                                            <td>@item.Score</td>
+
+                                            <td>@item.typeevaluation</td>
+                                            @if (item.date != null)
+                                            {
+                                                <td>@(((DateTime)@item.date).ToString("dddd,dd MMMM yyyy"))</td>}
+                                            else
+                                            {
+                                                <td></td>
+                                            }
+                                            <td>
+                                                <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+
+
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Criteria</th>
+                                                            <th>Note</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var cr in item.criteria)
+                                                        {
+                                                            <tr>
+                                                                <td>@cr.description</td>
+                                                                <td>@cr.Note</td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+
+                                                @if (item.employee != null && ViewBag.rates.ContainsKey(item.employee.id))
+                                                {
+                                                <td width="200px"><div data-employee="@item.employee.id" class="my-rating" initial-rating="@ViewBag.rates[item.employee.id] "></div></td>
+                                                }
+                                                else if (item.employee != null)
+                                                {
+                                                    <td width="200px"><div data-employee="@item.employee.id" class="my-rating" initial-rating="0"></div></td>
+                                                }
+                                                else
+                                                {
+                                                    <td></td>
+                                                }
+
+
+                                                <td class="text-right">
+                                                    <a href="#" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">favorite</i></a>
+                                                    <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
+                                                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                                                    @Html.ActionLink("detail", "detail", new { id = item.id })
+                                                </td>
+                                            </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- end content-->
+                </div>
+                <!--  end card  -->
+            </div>
+            <!-- end col-md-12 -->
+        </div>
+        <!-- end row -->
+    </div>
+</div>
+
+@section scripts{
+
+    <script src="@Url.Content("~/Content/js/jquery.star-rating-svg.min.js")"></script>
+    <script>
+        $(function () {
+            let datatable = $("#datatables").DataTable();
+            datatable.on('search.dt', initRating);
+            datatable.on('page.dt', initRating);
+            datatable.on('order.dt', initRating);
+
+            initRating();
+
+            function initRating() {
+                let rates = $(".my-rating");
+                for(let rate of rates) {
+                    $(rate).starRating({
+                        starSize: 35,
+                        initialRating: $(rate).attr('initial-rating').replace(/,/g, '.'),
+                        callback: function (currentRating, el) {
+                            $.get('/Rating/Rate/' + $(el).attr('data-employee') + '?rate=' + currentRating.toString().replace('.', ','));
+                        }
+                    });
+                }
+            }
+            
+        })
+    </script>
+}
