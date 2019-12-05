@@ -13,7 +13,7 @@ namespace PiDev.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201912041749401_a"; }
+            get { return "201912050102076_a"; }
         }
         
         string IMigrationMetadata.Source

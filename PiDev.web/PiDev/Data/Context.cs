@@ -20,5 +20,7 @@ namespace PiDev.Data
         }
 
         public System.Data.Entity.DbSet<PiDev.Domain.Entities.claim> claims { get; set; }
+
+        public System.Data.Entity.DbSet<PiDev.web.Models.claimVM> claimVMs { get; set; }
     }
 }

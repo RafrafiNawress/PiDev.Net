@@ -1,7 +1,8 @@
-﻿@model PiDev.Domain.Entities.claim
+﻿@model PiDev.web.Models.claimVM
 
 @{
     ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdvyTeam.cshtml";
 }
 
 <h2>Create</h2>
@@ -12,7 +13,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>claim</h4>
+        <h4>claimVM</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">

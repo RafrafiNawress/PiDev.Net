@@ -1,5 +1,6 @@
 namespace PiDev.Domain.Entities
 {
+    using Entites;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
