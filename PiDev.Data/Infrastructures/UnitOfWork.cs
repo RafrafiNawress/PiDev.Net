@@ -18,10 +18,6 @@ namespace Solution.Data.Infrastructure
             DBFactory.DataContext.SaveChanges();
         }
 
-        public void Dispose()
-        {
-            DBFactory.Dispose();
-        }
 
         public IRepositoryBase<T> GetRepositoryBase<T>() where T : class
         {

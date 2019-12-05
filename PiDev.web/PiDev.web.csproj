@@ -362,10 +362,10 @@
     <Content Include="Views\Claim\Create.cshtml" />
     <Content Include="Views\Claim\Index-domain.cshtml" />
     <Content Include="Views\Claim\Index.cshtml" />
+    <Content Include="Views\Claim\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\claims\" />
     <Folder Include="Views\Employee\" />
   </ItemGroup>
   <ItemGroup>

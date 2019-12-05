@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Service.Pattern
 {
-    public interface IService<T>:IDisposable
+    public interface IService<T>
     where T : class
     {
         void Add(T entity);

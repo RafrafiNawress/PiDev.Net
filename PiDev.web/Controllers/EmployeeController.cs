@@ -66,6 +66,25 @@ namespace PiDev.web.Controllers
             return result;
         }
 
+        public ActionResult activate(int id)
+        {
+           
+            
+
+
+            var url = "http://localhost:9080/pidev-web/api/Employee/activate/"+id;
+            var webrequest = (HttpWebRequest)WebRequest.Create(url);
+            webrequest.Method = "POST";
+
+            using (Stream webStream = webrequest.GetRequestStream())
+            using (StreamWriter requestWriter = new StreamWriter(webStream, System.Text.Encoding.ASCII))
+            {
+                requestWriter.Write("");
+            }
+            return RedirectToAction("Index");
+        }
+
+
     }
 }
         //[HttpGet]

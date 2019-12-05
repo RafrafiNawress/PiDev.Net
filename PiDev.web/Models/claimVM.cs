@@ -15,6 +15,8 @@ namespace PiDev.web.Models
 
         public String message { get; set; }
 
-        public String type { get; set; }
+
+
+
     }
 }

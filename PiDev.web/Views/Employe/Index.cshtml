@@ -24,7 +24,9 @@
                     <td>@p.role</td>
                     <td>@p.isActif</td>
                     <td>
-                        <input Class="table table-striped table-no-bordered table-hover" type="submit" />
+                    <div>
+                    @Html.ActionLink("act", "activate", new { id = p.id })
+                    </div>
                     </td>
                 </tr>
             }

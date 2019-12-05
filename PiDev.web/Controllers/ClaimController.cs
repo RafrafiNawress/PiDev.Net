@@ -4,6 +4,7 @@ using PiDev.web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -21,14 +22,14 @@ namespace PiDev.web.Controllers
         {
             // return View(claimService.GetMany());
             var claims = new List<claimVM>();
-            foreach (var item in claimService.GetMany())
+            var list = claimService.GetMany().ToList();
+            foreach (var item in list)
             {
                 claims.Add(new claimVM()
                 {
                     claimdate = item.claimdate,
                     subject = item.subject,
                     message = item.message,
-                    type = item.type,
                 });
                 
             }
@@ -53,14 +54,13 @@ namespace PiDev.web.Controllers
         {
             claim claimdomain = new claim()
             {
-                claimdate = cvm.claimdate,
+                claimdate = DateTime.Now,
                 subject = cvm.subject,
                 message = cvm.message,
-                type = cvm.type,
             };
             claimService.Add(claimdomain);
             claimService.Commit();
-            claimService.Dispose();
+            
                 return View();
             
         }
@@ -97,16 +97,12 @@ namespace PiDev.web.Controllers
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            claim c = claimService.GetById(id);
+            claimService.Delete(c);
+            claimService.Commit();
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+
+            return RedirectToAction("Index");
         }
     }
 }

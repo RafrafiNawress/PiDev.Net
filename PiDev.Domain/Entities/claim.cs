@@ -16,7 +16,9 @@ namespace PiDev.Domain.Entities
 
         public String message { get; set; }
 
-        public String type { get; set; }
+
+
+
 
 
     }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Solution.Data.Infrastructure
 {
-    public interface IDataBaseFactory:IDisposable
+    public interface IDataBaseFactory
     {
          Context DataContext { get;}
         //void Dispose(); hidden

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Solution.Data.Infrastructure
 {
-   public interface IUnitOfWork:IDisposable
+   public interface IUnitOfWork
     {
         void commit();
         IRepositoryBase<T> GetRepositoryBase<T>() where T:class;
