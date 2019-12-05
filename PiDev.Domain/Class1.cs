@@ -8,5 +8,6 @@ namespace PiDev.Domain
 {
     public class Class1
     {
+        //teest
     }
 }
