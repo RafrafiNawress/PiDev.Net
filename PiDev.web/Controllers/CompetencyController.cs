@@ -18,6 +18,11 @@ namespace PiDev.web.Controllers
             return View();
         }
 
+        public ActionResult Stats()
+        {
+            return View();
+        }
+
         public string GetEmployees(int jobId)
         { 
             return _service.GetEmployees(jobId);
@@ -37,6 +42,16 @@ namespace PiDev.web.Controllers
         public void AssignJob(int empId, int jobId)
         {
             _service.AssignJob(empId, jobId);
+        }
+
+        public string GetCompetenciesOverview()
+        {
+            return _service.GetCompetenciesOverview();
+        }
+        public string GetEmployeesByCompetency(string compName)
+        {
+
+            return _service.GetEmployeesByCompetency(compName);
         }
     }
 }
